@@ -1,0 +1,56 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<button onclick='window.localStorage.setItem("curr", 0);window.location.reload()'>RESTART</button>
+<script type="text/javascript">
+	perform_working();
+	function perform_working() {
+		limit = 10;
+		if(parseInt(window.localStorage.getItem("errCount"))>="3")
+		{
+			window.localStorage.setItem("errCount",0);	
+			window.location.reload();
+		}
+		if(window.localStorage.getItem("curr") === null)
+			window.localStorage.setItem("curr", 0);
+
+		let value = parseInt(window.localStorage.getItem("curr"));
+		
+		$.post("/build_data/"+(value*limit)+"/"+limit, function(response) {
+		
+			if(typeof(response.output)==="undefined"){
+		
+				if(window.localStorage.getItem("errCount")===null)
+					window.localStorage.setItem("errCount",1);
+		
+				window.localStorage.setItem("errCount",parseInt(window.localStorage.getItem("errCount"))+1)
+				document.write("ERROR OCCURED");
+				setTimeout(perform_working, 500);
+				document.write("<br>");
+				return;
+			}
+			
+			window.localStorage.setItem("errCount", 0);
+			window.localStorage.setItem("curr",parseInt(window.localStorage.getItem("curr"))+1);
+			
+			document.write((limit*window.localStorage.getItem("curr")) + " DONE");
+			document.write("<br>");
+			
+			if(parseInt(window.localStorage.getItem("curr"))>=225){
+				console.log(window.localStorage.getItem("curr"));
+				window.localStorage.setItem("curr", 0);
+				alert("ALL DONE");
+			}
+			else
+				setTimeout(perform_working, 100);
+		}).catch(function(){
+
+				if(window.localStorage.getItem("errCount")===null)
+					window.localStorage.setItem("errCount",1);
+		
+				window.localStorage.setItem("errCount",parseInt(window.localStorage.getItem("errCount"))+1)
+				document.write("ERROR OCCURED");
+				setTimeout(perform_working, 500);
+				document.write("<br>");
+			
+		});
+	}
+</script>

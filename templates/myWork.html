@@ -1,0 +1,1083 @@
+<script type="text/javascript">var MAX_SUPPLY_INDEX = 7;</script>
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Datatable creation styles-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" href="{{url_for('static', filename="icon.png")}}" type="image/png" sizes="16x16"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>CryptoBotAI</title>
+
+<style type="text/css">
+	.small_t{
+		font-size: 14px;
+		margin-top:10px;
+	}
+	.inc-size {
+		font-size: 16px;
+	}
+	#change_24h{
+	    width:8%!important}
+	.row{
+		margin-right: 0px!important;
+	}
+</style>
+<style mainbigbanner>
+	.w3-content{position:relative;margin-top:0em;}
+	.w3-btn,.w3-button{border:none;display:inline-block;outline:0;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+	.w3-btn,.w3-button{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none} 
+	.w3-disabled,.w3-btn:disabled,.w3-button:disabled{cursor:not-allowed;opacity:0.3}.w3-disabled *,:disabled *{pointer-events:none}
+	.w3-bar-block .w3-dropdown-hover .w3-button,.w3-bar-block .w3-dropdown-click .w3-button{width:100%;text-align:left;padding:8px 16px}
+	.w3-button:hover{color:#000!important;background-color:#ccc!important}
+
+	.w3-content button {
+	position: absolute;
+	top: 32%;
+	}
+
+	.w3-display-right {right:0}
+	.w3-display-left {left:0}
+</style>
+
+<style smallbanner>
+	.header {
+	  padding: 5px;
+	  height: 30px;
+	  width:100%;
+	  background: #1abc9c;
+	  font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 12px;
+		font-weight: bold;
+		line-height: 15px;
+		padding-top: 5px;
+		padding-bottom: 10px;
+		text-align: center;
+	}
+</style>
+
+<style headdata>
+	.headdata {
+	  text-align:center;
+	  background: white;
+	  font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 12px;
+	}
+</style>
+
+<style topheading>
+	.heading {
+	  padding: 5px;
+	  text-align:center;
+	  background: white;
+	  font-weight: bold;
+	}
+</style>
+
+
+<style ad1>
+	.center {
+	  display: block;
+	  margin-left: auto;
+	  margin-right: auto;
+	  width: 50%;
+	}
+</style>
+
+<!--basic to advance view menu design-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+	#mytable1, #mytable2, #mytable3, .nav{
+		font-weight: bold;
+	}
+</style>
+<!--split frame design-->
+<style framedesign>
+	* {
+	  box-sizing: border-box;
+	}
+
+	/* Create two unequal columns that floats next to each other */
+	.column {
+	  float: left;
+	  padding: 10px;
+	  
+	}
+
+	.left {
+	  width: 85%;
+	}
+
+	.right {
+	  width: 15%;
+	}
+
+	/* Clear floats after the columns */
+	.row:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}
+</style>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap.min.css"> -->
+<link rel="stylesheet" type="text/css" href="/static/dataTables.css">
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js"></script>
+<!--ATH info tooltip popup-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+	/* Popup container - can be anything you want */
+	.popup {
+	  position: relative;
+	  cursor: pointer;
+	  -webkit-user-select: none;
+	  -moz-user-select: none;
+	  -ms-user-select: none;
+	  user-select: none;
+	}
+
+	/* The actual popup */
+	.popup .popuptext {
+	  display: none;
+	  background-color: #555;
+	  color: #fff;
+	  text-align: center;
+	  border-radius: 6px;
+	  padding: 8px 0;
+	  position: absolute;
+	  z-index: 1;
+	  left: 50%;
+	  margin-left: -80px;
+	}
+
+	/* Popup arrow */
+	.popup .popuptext::after {
+	  content: "";
+	  position: absolute;
+	  top: 100%;
+	  left: 50%;
+	  margin-left: -5px;
+	  border-width: 5px;
+	  border-style: solid;
+	  border-color: #555 transparent transparent transparent;
+	}
+
+	/* Toggle this class - hide and show the popup */
+	.popup .show {
+	  visibility: visible;
+	  -webkit-animation: fadeIn 1s;
+	  animation: fadeIn 1s;
+	}
+
+	/* Add animation (fade in the popup) */
+	@-webkit-keyframes fadeIn {
+	  from {opacity: 0;} 
+	  to {opacity: 1;}
+	}
+
+	@keyframes fadeIn {
+	  from {opacity: 0;}
+	  to {opacity:1 ;}
+	}
+</style>
+<style filter tags>
+	.filtertag{ 
+		margin-left: 10px; 
+	}
+</style>
+<style>
+	body, html {
+		height: 100%;
+		margin:0
+	}
+
+	.bgimg {
+		height: 100%;
+		background-position: center;
+		background-size: cover;
+		position: relative;
+		color: #606561;
+		font-family: "Courier New", Courier, monospace;
+		font-size: 25px;
+		
+	}
+
+	.middle {
+		position: absolute;
+		top: 60%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+	}
+
+	hr {
+		margin:auto;
+		width: 50%;
+	}
+</style>
+<!--footer style-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="footer, address, phone, icons" />
+<!-- <link rel="stylesheet" href="/css/style.css"> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Sofia" rel="stylesheet" type="text/css">
+<!--green color code #25D366, #46CB1B, #12E772, #00FA9A-->
+
+<style footer-fixed>
+	/* The fixed footer at the bottom of the page */
+
+	footer{
+		position: fixed;
+		bottom: 0;
+	}
+
+	@media (max-height:800px){
+		footer { position: static; }
+		header { padding-top:40px; }
+	}
+
+
+	.footer-distributed{
+		background-color: #2c292f;
+		box-sizing: border-box;
+		width: 100%;
+		text-align: left;
+		font: bold 16px sans-serif;
+		padding: 20px 50px;
+		margin-top: 80px;
+	}
+
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-center,
+	.footer-distributed .footer-right{
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	/* Footer left */
+
+	.footer-distributed .footer-left{
+		width: 30%;
+	}
+
+	.footer-distributed h3{
+		color:  #ffffff;
+		font-family: 'Sofia', cursive;
+		margin: 0;
+		margin-bottom: 10px;
+	}
+
+	/* The company logo */
+
+	.footer-distributed .footer-left img{
+		width: 10%;
+	}
+
+	.footer-distributed h3 span{
+		color:  #e0ac1c;
+	}
+
+	/* Footer links */
+
+	.footer-distributed .footer-links{
+		color:  #ffffff;
+		margin: 20px 0 12px;
+	}
+
+	.footer-distributed .footer-links a{
+		display:inline-block;
+		line-height: 1.8;
+		text-decoration: none;
+		color:  inherit;
+	}
+
+	.footer-distributed .footer-company-name{
+		color:  #8f9296;
+		font-size: 14px;
+		font-weight: normal;
+		margin: 0;
+	}
+
+	/* Footer Center */
+
+	.footer-distributed .footer-center{
+		width: 35%;
+	}
+
+
+	.footer-distributed .footer-center i{
+		background-color:  #33383b;
+		color: #ffffff;
+		font-size: 25px;
+		width: 38px;
+		height: 38px;
+		border-radius: 50%;
+		text-align: center;
+		line-height: 42px;
+		margin: 10px 15px;
+		vertical-align: middle;
+	}
+
+	.footer-distributed .footer-center i.fa-envelope{
+		font-size: 17px;
+		line-height: 38px;
+	}
+
+	.footer-distributed .footer-center p{
+		display: inline-block;
+		color: #ffffff;
+		vertical-align: middle;
+		margin:0;
+	}
+
+	.footer-distributed .footer-center p span{
+		display:block;
+		font-weight: normal;
+		font-size:14px;
+		line-height:2;
+	}
+
+	.footer-distributed .footer-center p a{
+		color:  #e0ac1c;
+		text-decoration: none;;
+	}
+
+
+	/* Footer Right */
+
+	.footer-distributed .footer-right{
+		width: 30%;
+	}
+
+	.footer-distributed .footer-company-about{
+		line-height: 20px;
+		color:  #92999f;
+		font-size: 13px;
+		font-weight: normal;
+		margin: 0;
+	}
+
+	.footer-distributed .footer-company-about span{
+		display: block;
+		color:  #ffffff;
+		font-size: 18px;
+		font-weight: bold;
+		margin-bottom: 20px;
+	}
+
+	.footer-distributed .footer-icons{
+		margin-top: 25px;
+	}
+
+	.footer-distributed .footer-icons a i{
+		display: inline-block;
+		width: 35px;
+		height: 35px;
+		cursor: pointer;
+		background-color:  #33383b;
+		border-radius: 2px;
+
+		font-size: 20px;
+		color: #ffffff;
+		text-align: center;
+		line-height: 35px;
+
+		margin-right: 3px;
+		margin-bottom: 5px;
+	}
+
+	@media (max-width: 880px) {
+
+		.footer-distributed .footer-left,
+		.footer-distributed .footer-center,
+		.footer-distributed .footer-right{
+			display: block;
+			width: 100%;
+			margin-bottom: 40px;
+			text-align: center;
+		}
+
+		.footer-distributed .footer-center i{
+			margin-left: 0;
+		}
+	}
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+	.material-icons {vertical-align:-14%}
+	@media screen and (min-width: 725px) {
+		.row{
+			margin-left: 0px!important;
+		}
+		.if_mbl_float_no{
+			float:right;
+		}
+	}
+	.if_mbl_float_no{
+		margin-right: 15px;		
+	}
+</style>
+</head>
+
+<body>
+<!-- heading adds-->
+<div class="w3-content" style="overflow: hidden;">
+	<img class="mySlides" src="/static/trading.jpg" alt="custom_html_banner1" style="width:100% height:50%"/>
+	<img class="mySlides" src="/static/header1.jpg"alt="custom_html_banner2" style="width:100% height:50%">
+	<img class="mySlides" src="https://www.qries.com/images/banner_logo.png" alt="custom_html_banner3" style="width:100% height:50%">
+	<img class="mySlides" src="https://www.qries.com/images/banner_logo.png" alt="custom_html_banner4" style="width:100% height:50%">
+	<!--<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>-->
+	<!--<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>-->
+</div>
+
+<!-- header after adds-->
+
+
+<!-- Capitalization details after header-->
+<div class="headdata">
+	<span class="cryp" id='crypto'>Cryptocurrencies:<font color="blue">{{Cryptocurrencies}} </font></span>
+	<span class="mar" id='markets'>| Markets:<font color="blue">{{Markets}} </font></span>
+	| Market Cap:<span id='marketC'>${{MarketCap}}</span>
+	<span class="currency-usd" id='vol'> | 24h Vol:<font color="blue">${{Vol}}</font></span>
+	<span class="btc" id='btcdominance'>| BTC Dominance:<font color="blue">{{BTCDominance}}% </font></span>
+</div>
+
+<!-- Center add-->
+
+
+
+
+<!-- Table Heading-->
+<div class="heading">
+	<p>
+		<h1>
+			<font weight="bold">
+				<img src="/static/logo.png" width="90" height="70">Cryptocurrencies By Market Capitalization</font>
+		</h1>
+	</p>
+</div>
+
+
+<!--Basic and Advance tab design-->
+<div class="row">
+   <div class="" style="background-color:white;">
+		<div id ="leftbox" style="padding-left:16px">
+			<div class="container">
+				<ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#Basic" onclick="setHref('#Basic')">Basic View </a></li>
+				<li><a data-toggle="tab"  onclick="setHref('#Advance_View')" href="#Advance_View">Advance View</a></li>			
+				<li><a data-toggle="tab" onclick="setHref('#ATH_ATL')" href="#ATH_ATL"> ATH / ATL </a></li>
+				<li style="float:right"><a onclick="setHref('')" href="https://bots.cryptobotai.com"> Trading Bots </a></li>
+				<!--<li style="float:right"><a onclick="setHref('')" href="https://cbai.cryptobotai.com"> ICO </a></li>	-->
+				</ul>
+			</div>
+              
+			<div class="tab-content">
+                <div id="Basic" class="tab-pane fade in active">
+					</br>
+					<div class="table1" style="overflow:auto">
+						<!--<table class="table table-hover">-->
+						<table id="myTable1" class="table table-striped table-bordered" width="100%">
+						  <thead>
+							<tr>
+							  <th details="rank">Rank</th>
+							  <th details="name">Name</th>
+							  <th details="symbol">Symbol</th>
+							  <th details="price">Price</th>
+							  <th details="volume_24h">Volume(24h)</th>
+							  <th id="change_24h" details="change_24h">Change (24h)</th>
+							  <th details="market_cap">Market Cap </i></th>        
+							</tr>
+						  </thead>
+						</table>						
+			        </div>
+                </div>
+								
+				<div id="Advance_View" class="tab-pane fade" style="overflow:auto">
+					</br>
+					<div class="if_mbl_float_no">
+						<table>	
+							<tr>
+								<td>
+									<p for="price_filter" style="font-family:'Arial'" "font-size:14px"><b>Filter: </b></p>
+								</td>
+								<td>
+								    <p><select class="filtertag" name="filter1" id="filter1" style="font-size:14px;width:139px">
+										<option value="2">Price</option>
+										<option value="6">Market Cap</option>
+										<option value="4">Volume(24h)</option>
+										<option value="5">Change(24h)</option>
+										<option value="3">Circulating Supply</option>
+										<option id="MAX_SUPPLY_INDEX">Max Supply</option>
+										<script type="text/javascript">$(document).ready(function(){$("#MAX_SUPPLY_INDEX").attr("value", MAX_SUPPLY_INDEX);})</script>
+										</select>
+									</p>
+								</td>
+								<td>
+								    <p>								
+										<input class="filtertag" id="min" name="min" maxlength="16" size="16" placeholder="0" type="text" style="font-size:14px;width:180px" value="">
+									</p> 
+								</td>
+								<td>
+									<div>
+										<p class="filtertag" style="font-size:14px"> to </p>
+									</div>
+								</td>
+								<td>
+									<p>
+										<input class="filtertag" id="max" name="max" maxlength="16" size="16" placeholder="99999999999" type="text" style="font-size:14px;width:180px" value="">
+									</p>
+								</td> 
+								<td>
+									<div>
+										<p class="filtertag" style="font-size:14px"><button id="filter" onclick="otherfilter()">Go</button></p>
+									</div>
+								</td>
+								<td>
+									<div>
+										<p class="filtertag" style="font-size:14px"><button  id="clear">Clear</button></p>
+									</div>
+								</td>
+							</tr>
+						</table>
+						</br>											
+					</div>					 
+					</br>
+							
+					<div class="table1">
+						<table id="myTable2" class="table table-striped table-bordered" width="100%">
+							<thead>
+								<tr>
+									<th style="width:8%" details="sortable rank">Rank </th>
+									<th style="width:15%;" details="name_2">Name</th>
+									<th details="sortable price">Price($) </th>
+									<th details="sortable circulating_supply">Circulating Supply</th>
+									<th details="sortable volume_24h">Volume (24h)</th>
+									<th id="change_24h" details="sortable change_24h">Change (24h)</th>
+									<th details="sortable market_cap">Market Cap ($)</th>
+									<th details="sortable max_supply">Max Supply</th>
+								</tr>
+							</thead>
+                        </table>
+					</div>
+				</div>
+			<div id="ATH_ATL"  style="overflow:auto" class="tab-pane fade">
+			</br>
+				<div class="if_mbl_float_no">
+					<table>
+						<tr>
+							<td>
+								<p for="date_filter" style="font-family:'Arial'" "font-size:14px"><b>Filter HIGH/LOW: </b></p>
+							</td>
+							<td>
+								<p>								
+									<input class="filtertag" min="2007-01-01" id="startdate" name="startdate" type="date" style="font-size:14px" value="">
+								</p>
+							</td>
+							<td>
+								<div>
+									<p class="filtertag" style="font-size:14px"> to </p>
+								</div>
+							</td>
+							<td>
+								<p>
+									<input class="filtertag" min="2007-01-01" id="enddate" name="enddate" type="date" style="font-size:14px" value="">
+								</p>
+							</td> 
+							<td>
+								<div>
+									<p class="filtertag" style="font-size:14px"><button onclick="datePerformer()" id="datefilter">Go</button></p>
+								</div>
+							</td>
+							<td>
+								<div>
+									<p class="filtertag" style="font-size:14px"><button id="clear2">Clear</button></p>
+									<script type="text/javascript">
+										$(document).ready(function(){
+											var today = new Date();
+											var dd = today.getDate();
+											var mm = today.getMonth()+1; //January is 0!
+											var yyyy = today.getFullYear();
+											 if(dd<10){
+											        dd='0'+dd
+											    } 
+											    if(mm<10){
+											        mm='0'+mm
+											    } 
+
+											today = yyyy+'-'+mm+'-'+dd;
+											document.getElementById("enddate").setAttribute("max", today);
+											document.getElementById("startdate").setAttribute("max", today);
+										});
+									</script>
+								</div>
+							</td> 
+						</tr>
+					</table>
+					
+				</div>
+				</br>
+				<div class="table1">
+						<table id="myTable3" class="table table-striped table-bordered" width="100%">
+							<thead>
+								<tr>
+									<th style="width:8%" details="sortable rank">Rank </th>
+									<th style="width:15%;" details="sortable name_2">Name</th>
+									<th details="sortable price">Price($) </th>
+									<th details="sortable ath_date" style="width:10%">ATH Date</th>
+								    <th details="sortable ath_price" class="popup">
+										<i class="fa fa-info-circle" style="color:blue;" onclick="mypopup($(this).parent()[0])"></i> ATH Price
+									</th>
+									<th details="sortable HIGH" class="popup">HIGH</th>
+									<th style="width:10%" details="sortable atl_date">ATL Date</th>	
+									<th class="popup" details="sortable atl_price">
+										<i class="fa fa-info-circle" style="color:blue;" onclick="mypopup($(this).parent()[0])"></i> ATL Price
+									</th>
+									<th details="sortable LOW" class="popup">LOW</th>
+								</tr>
+							</thead>
+                        </table>
+					</div>
+			</div>
+			<div id="menu3"  style="overflow:auto" class="tab-pane fade">
+				<div class="bgimg">
+					<div class="middle" style="padding-top:20%;">
+						<h1><b>COMING SOON</b></h1>
+						<hr>
+						<p>Keep Watching</p>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>    
+	<div class="column right" style="background-color:white">
+		<div id ="rightbox" style="padding-right:5px">
+			<img alt="" decoding="async" src="">
+		</div>
+	</div>
+</div>
+
+<footer class="footer-distributed" style="background: #e8e8e8!important">
+	<div class="footer-left">
+		<img src="/static/logo.png" align="left" style="width:80px;vertical-align:middle;"><h3 style="margin-left:70px;"><span> About CryptoBotAI</span></h3>
+		<p class="footer-company-name" style="color: black!important">© 2021 CryptoBotAI. All rights reserved.</p>
+		
+	</div>
+
+	<div class="footer-center">
+		<div>
+			<i class="fa fa-envelope"></i>
+				<p><a href="mailto:support@cryptobotai.com">support@cryptobotai.com</a></p>
+		</div>
+	</div>
+	<div class="footer-right">
+		<p class="footer-company-about" style="color: black!important">
+			<span style="color:#e0ac1c">About the Company</span>
+			CryptobotAI is a platform with user friendly analysis of crypto stats for beginners to experts. It provides unique automated bots which trade on your behalf without disrupting your daily schedule. We aim to make crypto simple for every user.
+		</p>
+		<div class="footer-icons">
+			<a href="https://twitter.com/CryptoBotAI2020?s=08"><i class="fa fa-twitter"></i></a>
+			
+			
+			<a href="https://t.me/CBAIOFFICIAL2020"><i style="font-size:24px" class="fa"></i></a>
+		</div>
+	</div>
+</footer>
+<script footerban>
+	var slideIndex = 1;
+	showDivs(slideIndex);
+	function plusDivs(n) {
+		showDivs(slideIndex += n);
+	}
+	function showDivs(n) {
+		var i;
+		var x = document.getElementsByClassName("mySlides");
+		if (n > x.length) {slideIndex = 1} if (n < 1) {slideIndex = x.length}for
+			(i = 0; i < x.length; i++) {x[i].style.display = "none";}
+	    x[slideIndex-1].style.display = "block"; }
+</script>
+
+<script type="text/javascript">
+		var None = 0;
+		var all_data = {{ data | safe }};
+	$(document).ready(function(){
+		all_data = all_data.filter(function(val){return val.rank>0;})
+		all_data = all_data.map(function(val, key){
+			return {
+				"rank":'<span class="rank_data_area data_area">'+val.rank+'</span>',
+				"name":'<img width="30px" src="'+val.logo+'"/>'+' <span class="name_data_area data_area">'+val.name+'</span>',
+				"name_2":'<img width="30px" src="'+val.logo+'"/>'+' <span class="name_2_data_area data_area">'+val.name+'</span><span>-('+val.symbol+')</span>',
+				"symbol" : '<span class="symbol_data_area data_area">'+val.symbol+'</span>',
+				"price" : '$<span class="price_data_area inc-size data_area">'+val.price+'</span><br/><div class="small_t">'+val.btc_val+' BTC</div>',
+				"volume_24h" : '$<span style="font-size:15px" class="volume_24h_data_area data_area">'+val.volume_24h+'</span>',
+				"change_24h" : '<span style="font-size:15px" class="'+(val.change_24h>0?"label label-success":"label label-danger")+'"><span class="change_24h_data_area data_area">'+val.change_24h+'</span> %</span>',
+				"market_cap" : '$<span style="font-size:15px" class="market_cap_data_area data_area">'+val.market_cap+'</span>',
+				"circulating_supply" : '<span style="font-size:15px" class="circulating_supply_data_area data_area">'+val.circulating_supply+'</span>',
+				"ath_date":'<span style="font-size:15px" class="ath_date_data_area data_area">'+convertDateToDesiredFormat(val.ath_date)+'</span>',
+				"atl_date":'<span style="font-size:15px" class="atl_date_data_area data_area">'+convertDateToDesiredFormat(val.atl_date)+'</span>',
+				"ath_price":'$<span style="font-size:15px" class="ath_price_data_area data_area">'+val.ath_price+'</span>',
+				"atl_price":'$<span style="font-size:15px" class="atl_price_data_area data_area">'+val.atl_price+'</span>',
+				"max_supply":'<span style="font-size:15px" style="color:'+(val.max_supply<=0?"red":"green")+'" class="max_supply_data_area data_area">'+(val.max_supply?val.max_supply:"N/A")+'</span>',
+				"LOW":"<span class='data_area LOW_data_area' target='"+val.id+"'></span>",
+				"HIGH":"<span class='data_area HIGH_data_area' target='"+val.id+"'></span>"
+			};
+		});
+		var columns_1 = [];
+		$("#myTable1 th").each(function(){
+			let att = $(this).attr("details").split(" ");
+			columns_1.push({ orderable : (att.length==2), data : att[att.length-1] });
+		});
+		var table_1 = $("#myTable1").DataTable({
+			"lengthMenu": [[10, 25, 50,100,250,500,750,1000, -1], [10, 25, 50,100,250,500,750,1000,"All"]], 
+			"pageLength" : 25,
+			"columns" : columns_1,
+			"data" : all_data
+		});
+		var columns_2 = [];
+		$("#myTable2 th").each(function(){
+			let att = $(this).attr("details").split(" ");
+			columns_2.push({ orderable : (att.length==2), data : att[att.length-1] });
+		});
+		var table_2 = $("#myTable2").DataTable({
+			"lengthMenu": [[10, 25, 50,100,250,500,750,1000, -1], [10, 25, 50,100,250,500,750,1000, "All"]], 
+			"pageLength" : 25,
+			"columns" : columns_2,
+			"data" : all_data
+		});
+		var columns_3 = [];
+		$("#myTable3 th").each(function(){
+			let att = $(this).attr("details").split(" ");
+			columns_3.push({ orderable : (att.length==2), data : att[att.length-1] });
+		});
+		var table_3 = $("#myTable3").DataTable({
+			"lengthMenu": [[10, 25, 50, 100,250,500,750,1000, -1], [10, 25, 50,100,250,500,750,1000, "All"]], 
+			"pageLength" : 25,
+			"columns" : columns_3,
+			"data" : all_data
+		});
+		$("#myTable1 th,#myTable2 th, #myTable3 th").each(function(){
+			this.replaceWith(this.cloneNode(true));
+		});
+		$("#myTable1 th").css("width","auto")
+		list = $("#myTable2 th, #myTable3 th");
+		for(i=0;i<list.length; i++)
+			$(list[i]).click(sortColumn);
+		$('body').click(function(){ perform_parsing(); });
+		perform_parsing();
+		$(".sorting_disabled").attr("class","");
+	})
+</script>
+<script>
+// When the user clicks on div, open the popup
+	function mypopup(e) {
+		var popup = $(e).find("#myPopup")[0];
+		$(popup).css("display", $(popup).css("display")!="none"?"none":"block");
+		event.stopPropagation();
+	}
+</script>
+<!--other filter-->
+<script>
+function otherfilter() {
+	ListTable=$("#myTable2").DataTable();
+	var currentPage = ListTable.page();
+	ListTable.page(currentPage).draw("page");	
+   var min = parseFloat( $('#min').val());
+   var max = parseFloat( $('#max').val());
+   var e = document.getElementById('filter1');
+   var ddvalue = parseInt(e.value);
+   $("#myTable2 tr").each(function(){
+   	if($(this).children("th").length!=0)
+   		return;
+   	if(ddvalue==MAX_SUPPLY_INDEX&&min<=0)
+   		min=1;
+   	if(ddvalue==MAX_SUPPLY_INDEX&&max<=0)
+   		max=1;
+   	if(ddvalue!=2)
+   		d = $(this).children("td").eq(ddvalue).text();
+   	else
+   		d = $(this).find(".price_data_area").text();
+	let priceStr = d.replace(/,/g,'').replace('$','');
+	let priceInt = parseFloat(priceStr) || 0;
+     if ( (( isNaN( min ) && isNaN( max )) ||
+         ( isNaN( min ) && priceInt <= max ) ||
+         ( priceInt >= min  && isNaN( max )) ||
+         ( priceInt >= min  && priceInt <= max ))) {
+        	return;
+     }   
+     $(this).remove();
+   })
+}
+function convertDateToDesiredFormat(d) {
+	var nD = new Date(d).toDateString().split(' ');
+	return nD[2]+"-"+nD[1]+"-"+nD[3];
+}
+function isDate(d) {
+	return (d.indexOf("-")>0);
+}
+function convertDateFromDesiredFormat(d) {
+	return (new Date(d));
+}
+function sortColumn() {
+	if($(this).attr("details")==undefined)
+		return
+	let att = $(this).attr("details").split(" ");
+	if(att.length!=2)
+		return;
+	column = att[att.length-1]
+	table = "#"+$(this).parent().parent().parent().attr("id")
+	let mat = [ ];
+	$(table + " tr").each(function(){
+		mat.push($(this));
+	});
+	col_index = 0;
+	top_row = mat.shift();
+	child = top_row.children("th");
+	while($(child[col_index]).attr("details").indexOf(column)==-1)
+		col_index++;
+    mat.sort(function(a, b){
+    	a1 = a.find("."+column+"_data_area").text();
+    	b1 = b.find("."+column+"_data_area").text();
+    	textual = 0;
+    	if(a1=="N/A")
+    		a1="0";
+    	if(b1=="N/A")
+    		b1="0";
+		if(!isDate(a1) && column.indexOf("name")==-1)
+		{
+			a1 = parseFloat(a1.replace(/,/g, "").replace("$", ""));
+			b1 = parseFloat(b1.replace(/,/g, "").replace("$", ""));
+			textual = 1;
+		}
+		else if(isDate(a1))
+		{
+			a1 = convertDateFromDesiredFormat(a1);
+			b1 = convertDateFromDesiredFormat(b1);
+		}
+
+		console.log(a1,b1);
+        if($(table+" th").eq(col_index).attr("sorted-by")!="asc"){
+        	if(textual)
+				return a1-b1;
+			else
+				return (a1<b1?-1:1);
+        }
+		else{
+			if(textual)
+				return b1-a1;
+			else
+				return (a1>b1?-1:1);
+		}
+	});
+    if($(table+" th").eq(col_index).attr("sorted-by")!="asc") 
+    {
+        $(table+" th").eq(col_index).attr("sorted-by", "asc")
+        $(table+" .sorting_desc").attr("class", "sorting");
+        $(table+" .sorting_asc").attr("class", "sorting");
+		$(table+" th").eq(col_index).attr("class", "sorting_asc");
+	}
+    else
+    {
+        $(table+" th").eq(col_index).attr("sorted-by", "desc")
+        $(table+" .sorting_desc").attr("class", "sorting");
+        $(table+" .sorting_asc").attr("class", "sorting");
+		$(table+" th").eq(col_index).attr("class", "sorting_desc");
+    }
+	xx=-1;
+	if(col_index!=MAX_SUPPLY_INDEX || table!="#myTable2"){
+		$(table+" tr[role='row']").each(function(){
+			if(xx==-1){xx++; return;}
+			this.replaceWith(mat[xx][0].cloneNode(true));
+	        xx++;
+		})	
+	}
+	else
+	{
+		mat=mat.filter(function(val){return (parseInt(val.find("."+column+"_data_area").text())>0)});
+		$(table+" tr").each(function(){if(xx==-1){xx=0;} else{ $(this).remove(); }})
+		mat.forEach(function(val){ $(table).append(val[0]); })	
+	}
+}
+</script>
+
+<script> 
+    window.addEventListener('load', () => { 
+        const button = document.querySelector('#clear');
+        button.addEventListener('click', () => { 
+            document.querySelector('#min').value = ""; 
+			document.querySelector('#max').value = "";
+			// $('#myTable2').data.reload();
+			ListTable=$("#myTable2").DataTable();
+			var currentPage = ListTable.page();
+			ListTable.page(currentPage).draw("page");	
+        }); 
+    });  
+</script> 
+
+<script> 
+    window.addEventListener('load', () => { 
+        const button = document.querySelector('#clear2'); 
+        button.addEventListener('click', () => { 
+            document.querySelector('#startdate').value = ""; 
+			document.querySelector('#enddate').value = "";
+			datePerformer();
+        }); 
+    });  
+</script> 
+
+
+<script>
+	function numberWithCommas(number){
+		var parts=number.toString().split(".");
+		if(parts[0]!="0"&&parts.length==2){
+			parts[1] = parts[1].substr(0,2);
+			if(parts[1].length<2)
+				parts[1]+="0";	
+		}
+		parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,",");
+		return parts.join(".");
+	}
+	function perform_parsing() {
+		$(".data_area").each(function(){
+			var txt = $(this).text();
+			if(!isDate(txt))
+				txt = numberWithCommas($(this).text());
+			$(this).text(txt);
+		})
+	}
+</script>
+</body>
+</html>
+<script type="text/javascript">
+	function datePerformer() {
+		if(typeof(DateList)!=="undefined" && DateList.length!==0){
+			setTimeout(datePerformer, 500);
+			return;
+		}
+		$(".dollar_symbol_temp").remove()
+		$(".HIGH_data_area, .LOW_data_area").text("");
+		if($("#startdate").val()=="" || $("#enddate").val()=="")
+			return;
+		var start = +new Date($("#startdate").val());
+		var end = (+new Date($("#enddate").val())) + 86400000;
+		if(start>=end)
+			return;
+		DateList = [];
+		$(".HIGH_data_area").each(function(){
+			DateList.push( $(this).attr("target") );
+		});
+		perform_date_req(start, end);
+	}
+	function perform_date_req(start, end) {
+		if(DateList.length==0)
+			return;
+		var listSendToServer = [ ];
+		$.post("/api", { start:start, end:end, coins:DateList }, function(response){
+			if(typeof(response.output)=="undefined"){
+				DateList = [ ];
+				alert("Error Occured");
+				return;
+			}
+			response.coins.forEach(function(val){
+				var nodes = $("*[target='"+val+"']");
+
+				$(nodes[0]).text("N/A");
+				$(nodes[1]).text("N/A");				
+			});
+			response.output.forEach(function(val){
+				var nodes = $("*[target='"+val[0]+"']");
+				$(nodes[0]).text(val[1]);
+				$(nodes[1]).text(val[2]);
+				$("<span class='dollar_symbol_temp'>$</span>").insertBefore(nodes[0]);
+				$("<span class='dollar_symbol_temp'>$</span>").insertBefore(nodes[1]);
+			});
+			DateList = DateList.filter(function(val, key){ return key>=response.coins.length; });
+			perform_date_req(response.start, response.end);
+			perform_parsing();
+		});
+	}
+	$(document).ready(function() {
+		
+		let x = window.location.href.split('#');
+		
+			$("#myTable1 th").eq(0).attr("class","");
+			setTimeout(function(){$("a[href='#"+x[x.length-1]+"']")[0].click();
+
+		},300);
+		
+	} );
+	function perform_reloader(i) {
+		$.post("/reload_data/"+i, function(response){
+			if(typeof(response.output) === "undefined"){
+				alert("error Occured");
+				return;
+			}
+			let data_loaded = response.output.filter(function(val){return val.rank>0;})
+			data_loaded = data_loaded.map(function(val, key){
+				return {
+					"rank":'<span class="rank_data_area data_area">'+val.rank+'</span>',
+					"name":'<img width="30px" src="'+val.logo+'"/>'+' <span class="name_data_area data_area">'+val.name+'</span>',
+					"name_2":'<img width="30px" src="'+val.logo+'"/>'+' <span class="name_2_data_area data_area">'+val.name+'</span><span>-('+val.symbol+')</span>',
+					"symbol" : '<span class="symbol_data_area data_area">'+val.symbol+'</span>',
+					"price" : '$<span class="price_data_area inc-size data_area">'+val.price+'</span><br/><div class="small_t">'+val.btc_val+' BTC</div>',
+					"volume_24h" : '$<span class="volume_24h_data_area data_area">'+val.volume_24h+'</span>',
+					"change_24h" : '<span style="font-size:14px" class="'+(val.change_24h>0?"label label-success":"label label-danger")+'"><span class="change_24h_data_area data_area">'+val.change_24h+'</span>%</span>',
+					"market_cap" : '$<span class="market_cap_data_area data_area">'+val.market_cap+'</span>',
+					"circulating_supply" : '<span class="circulating_supply_data_area data_area">'+val.circulating_supply+'</span>',
+					"ath_date":'<span class="ath_date_data_area data_area">'+convertDateToDesiredFormat(val.ath_date)+'</span>',
+					"atl_date":'<span class="atl_date_data_area data_area">'+convertDateToDesiredFormat(val.atl_date)+'</span>',
+					"ath_price":'$<span class="ath_price_data_area data_area">'+val.ath_price+'</span>',
+					"atl_price":'$<span class="atl_price_data_area data_area">'+val.atl_price+'</span>',
+					"max_supply":'<span style="color:'+(val.max_supply<=0?"red":"green")+'" class="max_supply_data_area data_area">'+(val.max_supply?val.max_supply:"N/A")+'</span>',
+					"LOW":"<span class='data_area LOW_data_area' target='"+val.id+"'></span>",
+					"HIGH":"<span class='data_area HIGH_data_area' target='"+val.id+"'></span>"
+				};
+			});
+			let page = parseInt(response.page);
+			for(var i = 0; i<250&&(i+250*(page-1))<all_data.length&&i<data_loaded.length; i++)
+				all_data[i+250*(page-1)] = data_loaded[i];
+			if(page<9){
+				setTimeout(perform_reloader, 100, page+1)
+				return;
+			}
+			setTimeout(perform_reloader, 60*1000, 1)
+			perform_parsing();
+			let ListTable=$("#myTable1").DataTable();
+			var currentPage = ListTable.page();
+			ListTable.clear().rows.add(all_data).draw();
+			ListTable.page(currentPage).draw("page");	
+			 ListTable=$("#myTable2").DataTable();
+			 currentPage = ListTable.page();
+			ListTable.clear().rows.add(all_data).draw();
+			ListTable.page(currentPage).draw("page");	
+			 ListTable=$("#myTable3").DataTable();
+			 currentPage = ListTable.page();
+			ListTable.clear().rows.add(all_data).draw();
+			ListTable.page(currentPage).draw("page");	
+			otherfilter();
+			datePerformer();
+			perform_parsing();
+		});
+	}
+	$(document).ready(function(){perform_reloader(1)})
+	function setHref(v) {
+		window.location.href=window.location.href.substr(0, (window.location.href.indexOf("#")!=-1?window.location.href.indexOf("#"):100))+v;
+		if($("#myTable3 .popuptext").length==0)
+		{	
+			$("#myTable3 th").eq(4).append('<span class="popuptext" onclick="mypopup($(this).parent()[0])" id="myPopup" style="background-color: #cdcdcd; color: black; position: absolute; top: -100px;">ATH-  "All Time High". Is the Highest price ever registered of the coin</span>');
+			$("#myTable3 th").eq(7).append('<span class="popuptext" onclick="mypopup($(this).parent()[0])" id="myPopup" style="background-color: #cdcdcd; color: black; position: absolute; top: -100px;">ATL-  "All Time Low". Is the Lowest price ever registered of the coin</span>')
+		}
+	}
+</script>
