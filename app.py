@@ -25,6 +25,7 @@ def char_len(x, fixed_n):
 
 
 def ALL(val, pageNO=None):
+    print(pageNO)
 
     send_list = []
     rowperpage = 250
@@ -34,10 +35,10 @@ def ALL(val, pageNO=None):
         for x in lenght:
             try:
                 url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=" + \
-                    str(rowperpage)+"&page="+str(x) + \
+                    str(rowperpage)+"&page="+str(1) + \
                     "&sparkline=true&price_change_percentage=7d"
                 url2 = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=btc&order=market_cap_desc&per_page=" + \
-                    str(rowperpage)+"&page="+str(x)+""
+                    str(rowperpage)+"&page="+str(1)+""
                 json_url = urlopen(url)
                 json_url2 = urlopen(url2)
                 data = json.loads(json_url.read())
@@ -90,7 +91,7 @@ def ALL(val, pageNO=None):
     return send_list
 
 
-send_list = ALL(3468)
+# send_list = ALL(3468)
 inputed_time = time.time()
 header_data = []
 
@@ -221,10 +222,10 @@ def do_update():
 
 
 # Shut down the scheduler when exiting the app
-scheduler = BackgroundScheduler()
-scheduler.add_job(func=do_update, trigger="interval", seconds=30)
-scheduler.start()
-atexit.register(lambda: scheduler.shutdown())
+# scheduler = BackgroundScheduler()
+# scheduler.add_job(func=do_update, trigger="interval", seconds=30)
+# scheduler.start()
+# atexit.register(lambda: scheduler.shutdown())
 
 # @app.route("/comingsoon")
 # def comingsoon():

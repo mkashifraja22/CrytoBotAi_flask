@@ -1026,6 +1026,7 @@ function sortColumn() {
 			}
 			let data_loaded = response.output.filter(function(val){return val.rank>0;})
 			data_loaded = data_loaded.map(function(val, key){
+				
 				return {
 					"rank":'<span class="rank_data_area data_area">'+val.rank+'</span>',
 					"name":'<img width="30px" src="'+val.logo+'"/>'+' <span class="name_data_area data_area">'+val.name+'</span>',
