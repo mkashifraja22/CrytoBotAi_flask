@@ -670,7 +670,7 @@
 	</div>
 </div>
 
-<footer class="footer-distributed" style="background: #e8e8e8!important">
+<!-- <footer class="footer-distributed" style="background: #e8e8e8!important">
 	<div class="footer-left">
 		<img src="/static/logo.png" align="left" style="width:80px;vertical-align:middle;"><h3 style="margin-left:70px;"><span> About CryptoBotAI</span></h3>
 		<p class="footer-company-name" style="color: black!important">© 2021 CryptoBotAI. All rights reserved.</p>
@@ -695,7 +695,7 @@
 			<a href="https://t.me/CBAIOFFICIAL2020"><i style="font-size:24px" class="fa"></i></a>
 		</div>
 	</div>
-</footer>
+</footer> -->
 <script footerban>
 	var slideIndex = 1;
 	showDivs(slideIndex);
@@ -1026,6 +1026,7 @@ function sortColumn() {
 			}
 			let data_loaded = response.output.filter(function(val){return val.rank>0;})
 			data_loaded = data_loaded.map(function(val, key){
+				
 				return {
 					"rank":'<span class="rank_data_area data_area">'+val.rank+'</span>',
 					"name":'<img width="30px" src="'+val.logo+'"/>'+' <span class="name_data_area data_area">'+val.name+'</span>',
@@ -1046,10 +1047,11 @@ function sortColumn() {
 				};
 			});
 			let page = parseInt(response.page);
+			console.log(page)
 			for(var i = 0; i<250&&(i+250*(page-1))<all_data.length&&i<data_loaded.length; i++)
 				all_data[i+250*(page-1)] = data_loaded[i];
 			if(page<9){
-				setTimeout(perform_reloader, 100, page+1)
+				setTimeout(perform_reloader, 90*1000, page+1)
 				return;
 			}
 			setTimeout(perform_reloader, 60*1000, 1)

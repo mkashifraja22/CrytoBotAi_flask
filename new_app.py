@@ -31,9 +31,9 @@ def ALL(val, pageNO=None):
     send_list = []
     rowperpage = 250
     lenght = range(1,7)
-    
    
     for x in lenght:
+        print("fetching page " , x)
         try:
             url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=" + \
                 str(rowperpage)+"&page="+str(x) + \
@@ -88,11 +88,13 @@ def ALL(val, pageNO=None):
 
             pass
                  
-    if len(send_list) > 2400:
+    if len(send_list) > 1300:
         filename = 'json' + '.json'
+        # with open('/home/ubuntu/cryptobotai/json.json', 'w') as f:
         with open(filename, 'w') as f:
             json.dump(send_list, f)
     else:
+        # f = open('/home/ubuntu/cryptobotai/json.json')
         f = open('json.json')
         data = json.load(f)
         print("lennnnnnnn------", len(data))
@@ -104,7 +106,7 @@ def ALL(val, pageNO=None):
 inputed_time = time.time()
 header_data = []
 
-send_list = sorted(ALL(3468), key=lambda d: d['rank'], reverse=False)
+send_list = sorted(ALL(1500), key=lambda d: d['rank'], reverse=False)
 
 
 @app.route('/')
@@ -228,14 +230,13 @@ def api():
 
 
 def do_update():
-    print("scheduler executed")
     global send_list
-    send_list = sorted(ALL(3468), key=lambda d: d['rank'], reverse=False)
+    send_list = sorted(ALL(1500), key=lambda d: d['rank'], reverse=False)
 
 
 # Shut down the scheduler when exiting the app
 scheduler = BackgroundScheduler()
-scheduler.add_job(do_update, trigger="interval", seconds=30)
+scheduler.add_job(func=do_update, trigger="interval", seconds=30)
 scheduler.start()
 atexit.register(lambda: scheduler.shutdown())
 

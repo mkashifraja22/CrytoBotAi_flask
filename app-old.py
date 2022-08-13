@@ -67,19 +67,21 @@ def ALL(val, pageNO=None):
 send_list = ALL(2250)
 inputed_time = time.time()
 header_data = []
+
+
 @app.route('/')
 def index():
 	global header_data
 	#header crypto data
 	try:
-	    header_url="https://api.coingecko.com/api/v3/global"
-	    header_json_url=urlopen(header_url)
-	    header_data=json.loads(header_json_url.read())
+		header_url="https://api.coingecko.com/api/v3/global"
+		header_json_url=urlopen(header_url)
+		header_data=json.loads(header_json_url.read())
 	except:
 	    pass
 	#print(header_data)
 
-	Cryptocurrencies_data=header_data['data']['active_cryptocurrencies'] 
+	Cryptocurrencies_data = header_data['data']['active_cryptocurrencies'] 
 	Markets_data=header_data['data']['markets']
 	MarketCap_data="%0.f"%(header_data['data']['total_market_cap']['usd'])
 	Vol_data="%0.f"%(header_data['data']['total_volume']['usd'])
@@ -143,7 +145,9 @@ def startWorking(start, limit):
 
 @app.route("/reload_data/<page>", methods=["GET", "POST"])
 def reload_data(page):
-	return make_response({"output":ALL(250, int(page)), "page":page}, 200)
+	output=ALL(250, int(page))
+	print('len---------', len(output) )
+	return make_response({"output":output, "page":page}, 200)
 
 @app.route("/api", methods=["POST"])
 def api():

@@ -217,10 +217,10 @@ def do_update():
 
 
 do_update()
-# scheduler = BackgroundScheduler()
-# scheduler.add_job(func=do_update, trigger="interval", seconds=20)
-# scheduler.start()
-# atexit.register(lambda: scheduler.shutdown())
+scheduler = BackgroundScheduler()
+scheduler.add_job(func=do_update, trigger="interval", seconds=20)
+scheduler.start()
+atexit.register(lambda: scheduler.shutdown())
 
 #@app.route("/comingsoon")
 #def comingsoon():
